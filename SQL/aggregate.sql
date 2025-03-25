@@ -3,7 +3,7 @@ SELECT accommodation_id, COUNT(*) AS rental_count
 FROM rental_transactions
 GROUP BY accommodation_id
 ORDER BY rental_count DESC
-LIMIT 5;
+LIMIT 1;
 
 -- Procedure: to count how many students have occupied one accommodation
 DELIMITER $$
@@ -35,16 +35,4 @@ FROM accommodations
 ORDER BY price DESC
 LIMIT 1;
 
---- get the student living in most exenpsive accomodation
 
-SELECT 
-    u.id AS student_id,
-    u.name AS student_name,
-    a.title AS accommodation_title,
-    a.price
-FROM rental_transactions rt
-JOIN accommodations a ON rt.accommodation_id = a.id
-JOIN users u ON rt.student_id = u.id
-WHERE a.price = (
-    SELECT MAX(price) FROM accommodations
-); 

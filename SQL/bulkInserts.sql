@@ -13,8 +13,14 @@ VALUES
 ('Rocket Raccon', 'rocket@exampe.com', 'password', 'Student');
 
 
+
+
+
+
+
+
 -- creating sample data for accomodations
---- creating accomodations will also create verification request
+-- creating accomodations will also create verification request
 
 INSERT INTO accommodations (title, description, price, seller_id)
 VALUES 
@@ -30,21 +36,7 @@ VALUES
 ('5 room flat  ', ' Accomodation for  people.', 800.00, 8);
 
 
---- creating triggers for creating verification request
 
-
-DELIMITER //
-CREATE TRIGGER createAccommodations
-AFTER INSERT ON accommodations
-FOR EACH ROW
-BEGIN
-    INSERT INTO verification_requests (accommodation_id, seller_id, status)
-    VALUES (NEW.id, NEW.seller_id, 'PENDING');
-END;
-//
-DELIMITER ;
-
---- creating rental transactions with transactions 
 
 START TRANSACTION;
 
@@ -62,22 +54,10 @@ INSERT INTO rental_transactions (accommodation_id, student_id) VALUES (10, 10);
 COMMIT;
 
 
---- creating triggers for creating verification request
 
 
-DELIMITER //
 
-CREATE TRIGGER trg_mark_accommodation_rented
-AFTER INSERT ON rental_transactions
-FOR EACH ROW
-BEGIN
-  UPDATE accommodations
-  SET status = 'RENTED'
-  WHERE id = NEW.accommodation_id;
-END;
-//
 
-DELIMITER ;
 
 
 
