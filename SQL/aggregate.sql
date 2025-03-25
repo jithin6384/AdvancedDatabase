@@ -11,13 +11,13 @@ DELIMITER $$
 CREATE PROCEDURE get_user_count_for_accommodation(IN acc_id INT)
 BEGIN
     SELECT 
-        a.id AS accommodation_id,
-        a.title,
+        acc.id AS accommodation_id,
+        acc.title,
         COUNT(rt.student_id) AS total_users
-    FROM accommodations a
-    LEFT JOIN rental_transactions rt ON a.id = rt.accommodation_id
-    WHERE a.id = acc_id
-    GROUP BY a.id, a.title;
+    FROM accommodations acc
+    LEFT JOIN rental_transactions rt ON acc.id = rt.accommodation_id
+    WHERE acc.id = acc_id
+    GROUP BY acc.id, acc.title;
 END$$
 
 DELIMITER ;
