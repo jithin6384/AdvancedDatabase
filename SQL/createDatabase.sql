@@ -1,4 +1,4 @@
-CREATE database gisma_accomodations ;
+CREATE database gisma_accommodations ;
 
 USE gisma_accomodations;
 
