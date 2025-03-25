@@ -1,4 +1,4 @@
-use('gisma_accomodation_test');
+use('gisma_accomodation_systems');
 
     db.address.drop();
     db.accommodation_comments.drop();
