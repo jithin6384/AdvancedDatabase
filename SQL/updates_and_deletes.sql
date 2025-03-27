@@ -29,7 +29,7 @@ WHERE id IN (
   
 DELIMITER $$
 
-CREATE PROCEDURE create_accommodation_for_seller(IN sellerID INT)
+CREATE PROCEDURE verify_request_for_seller(IN sellerID INT)
 BEGIN
     UPDATE verification_requests
     SET status = 'VERIFIED'
@@ -44,7 +44,7 @@ FROM users
 WHERE role = 'SELLER'
   AND email = 'mark@exampe.com';
 
-CALL create_accommodation_for_seller(@seller_id);
+CALL verify_request_for_seller(@seller_id);
 
 
 
