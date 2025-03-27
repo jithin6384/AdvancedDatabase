@@ -37,7 +37,7 @@ db.address.insertMany([
   const accommodation_comment_docs =[]
   for (let i = 0; i < comments.length; i++) {
     accommodation_comment_docs.push({
-        userId: user_ids[Math.floor(Math.random() * user_ids.length)],
+        userId: user_ids[Math.floor(Math.random() * user_ids.length) + 1] || 2,
         accommodationId: (i + 1),
         commentText: comments[i],
         review: Math.floor(Math.random() * 6 + 1),
